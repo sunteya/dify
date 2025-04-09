@@ -80,12 +80,12 @@ const InstallForm = () => {
     fetchSetupStatus().then((res: SetupStatusResponse) => {
       if (res.step === 'finished') {
         localStorage.setItem('setup_status', 'finished')
-        window.location.href = '/signin'
+        window.location.href = '/dify/signin'
       }
       else {
         fetchInitValidateStatus().then((res: InitValidateStatusResponse) => {
           if (res.status === 'not_started')
-            window.location.href = '/init'
+            window.location.href = '/dify/init'
         })
       }
       setLoading(false)

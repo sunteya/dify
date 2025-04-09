@@ -466,7 +466,7 @@ export const request = async<T>(url: string, options = {}, otherOptions?: IOther
     const errResp: Response = err as any
     if (errResp.status === 401) {
       const [parseErr, errRespData] = await asyncRunSafe<ResponseError>(errResp.json())
-      const loginUrl = `${globalThis.location.origin}/signin`
+      const loginUrl = `${globalThis.location.origin}/dify/signin`
       if (parseErr) {
         globalThis.location.href = loginUrl
         return Promise.reject(err)
@@ -498,11 +498,11 @@ export const request = async<T>(url: string, options = {}, otherOptions?: IOther
         return Promise.reject(err)
       }
       if (code === 'not_init_validated' && IS_CE_EDITION) {
-        globalThis.location.href = `${globalThis.location.origin}/init`
+        globalThis.location.href = `${globalThis.location.origin}/dify/init`
         return Promise.reject(err)
       }
       if (code === 'not_setup' && IS_CE_EDITION) {
-        globalThis.location.href = `${globalThis.location.origin}/install`
+        globalThis.location.href = `${globalThis.location.origin}/dify/install`
         return Promise.reject(err)
       }
 

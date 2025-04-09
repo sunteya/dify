@@ -18,7 +18,7 @@ const InvitationLink = ({
   const selector = useRef(`invite-link-${randomString(4)}`)
 
   const copyHandle = useCallback(() => {
-    copy(`${!value.url.startsWith('http') ? window.location.origin : ''}${value.url}`)
+    copy(`${!value.url.startsWith('http') ? `${window.location.origin}/dify` : '/dify'}${value.url}`)
     setIsCopied(true)
   }, [value])
 
